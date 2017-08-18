@@ -22,3 +22,17 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.modal-overlay-after-open {
+	/* background-color: black !important; */
+	/* background-image: none; */
+	
+	/* opacity: 0.9 !important; */
+	
+	position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.75);
+}

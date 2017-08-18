@@ -9,7 +9,8 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		addComment: () => { dispatch(actions.addComment()); }
+		addComment: () => { dispatch(actions.addComment()); },
+		// getCategories: 
 	};
 }
 

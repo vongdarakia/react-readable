@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from './actions';
 import ReadableApp from './components/ReadableApp';
@@ -9,7 +8,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		addComment: () => { dispatch(actions.addComment()); }
+		addComment: () => { dispatch(actions.addComment()); },
 	};
 }
 
