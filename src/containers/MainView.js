@@ -10,7 +10,7 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		fetchCategories: actions.fetchCategories().bind(this, dispatch)
+        fetchCategories: () => dispatch(actions.fetchCategories())
 	};
 }
 
