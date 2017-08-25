@@ -1,5 +1,4 @@
 import * as types from '../types/readable'
-import * as ReadableAPI from '../util/readableAPI';
 
 let initState = {
     categories: [],
@@ -21,14 +20,20 @@ const readable = (state = initState, action) => {
                 posts: action.posts
             }
         case types.UPVOTE_POST:
-            console.log("Upvoting " + action.postId)
-            let { posts } = state;
-            console.log(action.post);
             return {
                 ...state,
                 posts: state.posts.map((post) => {
                     if (post.id === action.post.id) {
-                        console.log("FONDUND")
+                        return { ...action.post };
+                    }
+                    return post;
+                })
+            }
+        case types.DOWNVOTE_POST:
+            return {
+                ...state,
+                posts: state.posts.map((post) => {
+                    if (post.id === action.post.id) {
                         return { ...action.post };
                     }
                     return post;

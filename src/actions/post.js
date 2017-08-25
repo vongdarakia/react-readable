@@ -33,9 +33,15 @@ export const upvotePost = (postId) => {
 }
 
 export const downvotePost = (postId) => {
-    return {
-        type: types.DOWNVOTE_POST,
-        postId
+    return dispatch => {
+        ReadableAPI.downvotePost(postId, post => {
+            if (post) {
+                dispatch({
+                    type: types.DOWNVOTE_POST,
+                    post
+                });
+            }
+        });
     }
 }
 

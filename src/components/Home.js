@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import Post from './Post';
 
 class Home extends Component {
-    constructor() {
-        super();
-        console.log(this.props);
-        
-    }
     componentDidMount() {
         this.props.fetchCategories();
         this.props.fetchPosts();

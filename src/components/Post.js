@@ -9,14 +9,9 @@ class Post extends Component {
 		return (
             <div className="Post">
                 <div>
-                    <button onClick={() => {
-                        console.log("voting");
-                        console.log(upvote)
-                        upvote(id)
-                    }
-                    }>upvote</button>
+                    <button onClick={() => { upvote(id) }}>upvote</button>
                     <span>{voteScore}</span>
-                    <button>downvote</button>
+                    <button onClick={() => { downvote(id) }}>downvote</button>
                 </div>
                 {title}
                 <p>by {author}</p>
