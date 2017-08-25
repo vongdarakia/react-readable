@@ -53,10 +53,10 @@ export const loadPosts = (posts) => {
     }
 }
 
-export const fetchPosts = () => {
+export const fetchPosts = (category) => {
     console.log("posts fetching");
     return dispatch => {
-        ReadableAPI.getPosts().then(posts => {
+        ReadableAPI.getPosts(category).then(posts => {
             if (posts) {
                 console.log(posts);
                 dispatch(loadPosts(posts));

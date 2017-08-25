@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import Post from './Post';
+import Post from '../containers/Post';
 
 class Home extends Component {
     componentDidMount() {
+        let category = "all";
+        if (this.props.match && this.props.match.params.category) {
+            category = this.props.match.params.category;
+        }
         this.props.fetchCategories();
-        this.props.fetchPosts();
-        console.log(this.props);
-        this.upvote = this.props.upvote.bind(this);
-        this.downvote = this.props.downvote.bind(this);
+        this.props.fetchPosts(category);
     }
 	render() {
         let category = "all";
@@ -32,7 +33,7 @@ class Home extends Component {
                     <ul className="posts">
                         {this.props.posts.map((post, idx) => (
                             <li key={"p"+idx}>
-                                <Post {...post} upvote={this.upvote} downvote={this.downvote}/>
+                                <Post {...post}/>
                             </li>
                         ))}
                     </ul>
