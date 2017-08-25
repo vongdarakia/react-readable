@@ -1,11 +1,11 @@
-import * as types from '../types/readable'
+import * as types from '../types/Readable'
 
 let initState = {
     categories: [],
     posts: []
 };
 
-const readable = (state = initState, action) => {
+const Readable = (state = initState, action) => {
     switch (action.type) {
         case 'LOAD_CATEGORIES':
             console.log("categories state change")
@@ -44,4 +44,4 @@ const readable = (state = initState, action) => {
     }
 }
 
-export default readable;
+export default Readable;

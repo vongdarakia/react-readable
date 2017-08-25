@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
-import Home from '../containers/Home';
+import Home from '../containers/HomePage';
+// import PostPage from '../containers/PostPage'
 
 class ReadableApp extends Component {
 	render() {
@@ -16,7 +17,8 @@ class ReadableApp extends Component {
 						</ul>
 					</div>
 					<Route exact path="/" component={Home}/>
-					<Route path="/:category" component={Home}/>
+					<Route exact path="/:category" component={Home}/>
+					
 					<button onClick={this.openModal}>Add Comment</button>
 				</div>
 			</Router>
@@ -25,3 +27,4 @@ class ReadableApp extends Component {
 }
 
 export default ReadableApp;
+{/* <Route path="/:category/:postId" component={PostPage}/> */}

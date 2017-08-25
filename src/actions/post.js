@@ -1,5 +1,5 @@
-import * as ReadableAPI from '../util/readableAPI';
-import * as types from '../types/readable';
+import * as ReadableAPI from '../util/ReadableAPI';
+import * as types from '../types/Readable';
 
 export const addPost = () => {
     return {
@@ -53,6 +53,14 @@ export const loadPosts = (posts) => {
     }
 }
 
+export const loadPost = (post) => {
+    console.log("post dispatching")
+    return {
+        type: types.LOAD_POST,
+        post
+    }
+}
+
 export const fetchPosts = (category) => {
     console.log("posts fetching");
     return dispatch => {
@@ -60,6 +68,18 @@ export const fetchPosts = (category) => {
             if (posts) {
                 console.log(posts);
                 dispatch(loadPosts(posts));
+            }
+        });
+    }
+}
+
+export const fetchPost = (category) => {
+    console.log("posts fetching");
+    return dispatch => {
+        ReadableAPI.getPost(category).then(posts => {
+            if (posts) {
+                console.log(posts);
+                dispatch(loadPost(posts));
             }
         });
     }

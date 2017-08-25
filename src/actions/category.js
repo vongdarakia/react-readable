@@ -1,4 +1,4 @@
-import * as ReadableAPI from '../util/readableAPI';
+import * as ReadableAPI from '../util/ReadableAPI';
 
 export const loadCategories = (categories) => {
     console.log("categories dispatching")

@@ -6,7 +6,18 @@ export const getAllCategories = () => fetch(`${url}categories`, { headers })
     .then(data => data.categories)
     .catch(error => { console.log('request failed', error); });
 
-export const getPosts = (category) => {
+export const getPost = (category='all', id) => {
+    let fetchPostsUrl = `${url}posts/${id}`;
+
+    if (category !== 'all') {
+        fetchPostsUrl = `${url}${category}/posts/${id}`;
+    }
+    return fetch(fetchPostsUrl, { headers })
+    .then((res) => res.json())
+    .catch(error => { console.log('request failed', error); })
+};
+
+export const getPosts = (category='all') => {
     let fetchPostsUrl = `${url}posts`;
 
     if (category !== 'all') {

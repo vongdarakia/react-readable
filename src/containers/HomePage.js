@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import actions from '../actions';
-import { default as HomeComponent } from '../components/Home';
+import { default as HomeComponent } from '../components/HomePage';
 
 const mapStateToProps = state => {
 	return {
@@ -16,9 +16,9 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-const Home = connect(
+const HomePage = connect(
 	mapStateToProps,
 	mapDispatchToProps
 )(HomeComponent);
 
-export default Home;
+export default HomePage;

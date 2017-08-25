@@ -1,7 +1,7 @@
 // import React, { Component } from 'react';
 // import { connect } from 'react-redux';
 // import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import * as ReadableAPI from '../util/readableAPI';
+// import * as ReadableAPI from '../util/ReadableAPI';
 
 // class PostsView extends Component {
 // 	constructor() {
