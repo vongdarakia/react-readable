@@ -8,7 +8,9 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
 	return {
-		addComment: () => { dispatch(actions.addComment()); },
+		addComment: () => dispatch(actions.addComment()),
+		upvote:		() => dispatch(actions.upvotePost()),
+		downvote:	() => dispatch(actions.downvotePost()),
 	};
 }
 

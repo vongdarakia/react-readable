@@ -7,6 +7,7 @@ export const loadCategories = (categories) => {
         categories
     }
 }
+
 export const fetchCategories = () => {
     console.log("categories fetching");
     return dispatch => {

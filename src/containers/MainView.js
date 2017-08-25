@@ -4,13 +4,17 @@ import Home from '../components/Home';
 
 const mapStateToProps = state => {
 	return {
-        categories: state.readable.categories
+        categories: state.readable.categories,
+        posts: state.readable.posts
     }
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
-        fetchCategories: () => dispatch(actions.fetchCategories())
+		fetchCategories: 	() => dispatch(actions.fetchCategories()),
+		fetchPosts: 		() => dispatch(actions.fetchPosts()),
+		upvote:				(postId) => dispatch(actions.upvotePost(postId)),
+		downvote:			(postId) => dispatch(actions.downvotePost(postId)),
 	};
 }
 
