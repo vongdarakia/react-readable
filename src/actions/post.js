@@ -73,13 +73,13 @@ export const fetchPosts = (category) => {
     }
 }
 
-export const fetchPost = (category) => {
-    console.log("posts fetching");
+export const fetchPost = (id) => {
+    console.log("post fetching");
     return dispatch => {
-        ReadableAPI.getPost(category).then(posts => {
-            if (posts) {
-                console.log(posts);
-                dispatch(loadPost(posts));
+        ReadableAPI.getPost(id).then(post => {
+            if (post) {
+                console.log(post);
+                dispatch(loadPost(post));
             }
         });
     }

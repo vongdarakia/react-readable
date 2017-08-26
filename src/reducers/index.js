@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import readable from './readable';
+import HomePage from './HomePage';
+import PostPage from './PostPage';
 
-const rootReducer = combineReducers({ readable });
+const rootReducer = combineReducers({ HomePage, PostPage });
 
 export default rootReducer;

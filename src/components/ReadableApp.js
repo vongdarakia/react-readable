@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import '../App.css';
-import Home from '../containers/HomePage';
+import HomePage from '../containers/HomePage';
+import PostPage from '../containers/PostPage';
 // import PostPage from '../containers/PostPage'
 
 class ReadableApp extends Component {
@@ -16,8 +17,9 @@ class ReadableApp extends Component {
 							<li><Link to="/redux">Redux</Link></li>
 						</ul>
 					</div>
-					<Route exact path="/" component={Home}/>
-					<Route exact path="/:category" component={Home}/>
+					<Route exact path="/" component={HomePage}/>
+					<Route exact path="/:category" component={HomePage}/>
+					<Route path="/:category/:postId" component={PostPage}/>
 					
 					<button onClick={this.openModal}>Add Comment</button>
 				</div>

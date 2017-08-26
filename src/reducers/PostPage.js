@@ -1,4 +1,4 @@
-import * as types from '../types/readable'
+import * as types from '../types/Readable'
 
 let initState = {
     author: '',

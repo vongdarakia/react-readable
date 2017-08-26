@@ -5,7 +5,7 @@ let initState = {
     posts: []
 };
 
-const Readable = (state = initState, action) => {
+const HomePage = (state = initState, action) => {
     switch (action.type) {
         case 'LOAD_CATEGORIES':
             console.log("categories state change")
@@ -44,4 +44,4 @@ const Readable = (state = initState, action) => {
     }
 }
 
-export default Readable;
+export default HomePage;

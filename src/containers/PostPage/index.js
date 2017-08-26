@@ -1,21 +1,22 @@
 import { connect } from 'react-redux';
-import actions from '../actions';
-import { default as PostComponent } from '../components/Post';
+import actions from '../../actions';
+import { default as PostPageComponent } from '../../components/PostPage';
 
 const mapStateToProps = state => {
-	return {};
+	return { ...state.PostPage };
 }
 
 function mapDispatchToProps(dispatch) {
 	return {
+        fetchPost:  (postId) => dispatch(actions.fetchPost(postId)),
 		upvote:		(postId) => dispatch(actions.upvotePost(postId)),
 		downvote:	(postId) => dispatch(actions.downvotePost(postId)),
 	};
 }
 
-const Post = connect(
+const PostPage = connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(PostComponent);
+)(PostPageComponent);
 
-export default Post;
+export default PostPage;

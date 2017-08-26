@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Post extends Component {
     componentDidMount() {
         // this.props.fetchPosts();
     }
 	render() {
-        let {id, author, title, voteScore, upvote, downvote} = this.props;
+        let {id, category, author, title, voteScore, upvote, downvote} = this.props;
 		return (
             <div className="Post">
                 <div>
@@ -15,6 +16,7 @@ class Post extends Component {
                 </div>
                 {title}
                 <p>by {author}</p>
+                <Link to={`/${category}/${id}`}>GO TO PAGE</Link>
             </div>
 		);
 	}

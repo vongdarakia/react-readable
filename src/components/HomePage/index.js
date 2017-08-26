@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Post from '../containers/Post';
+import Post from '../../containers/HomePage/Post';
 
-class Home extends Component {
+class HomePage extends Component {
     componentDidMount() {
         let category = "all";
         if (this.props.match && this.props.match.params.category) {
@@ -15,9 +15,9 @@ class Home extends Component {
         if (this.props.match && this.props.match.params.category) {
             category = this.props.match.params.category;
         }
-        console.log("rendering home")
+        console.log("rendering HomePage")
 		return (
-            <div className="Home">
+            <div className="HomePage">
                 <div className="category-section">
                     <h2>Category: { category }</h2>
                     <ul>
@@ -38,11 +38,11 @@ class Home extends Component {
                         ))}
                     </ul>
                 </div>
-                <h2>This is home</h2>
+                <h2>This is HomePage</h2>
                 
             </div>
 		);
 	}
 }
 
-export default Home;
+export default HomePage;

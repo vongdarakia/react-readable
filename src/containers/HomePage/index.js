@@ -1,12 +1,9 @@
 import { connect } from 'react-redux';
-import actions from '../actions';
-import { default as HomeComponent } from '../components/HomePage';
+import actions from '../../actions';
+import { default as HomeComponent } from '../../components/HomePage';
 
 const mapStateToProps = state => {
-	return {
-        categories: state.readable.categories,
-        posts: state.readable.posts
-    }
+	return { ...state.HomePage }
 }
 
 function mapDispatchToProps(dispatch) {
