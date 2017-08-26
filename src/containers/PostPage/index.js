@@ -8,9 +8,10 @@ const mapStateToProps = state => {
 
 function mapDispatchToProps(dispatch) {
 	return {
-        fetchPost:  (postId) => dispatch(actions.fetchPost(postId)),
-		upvote:		(postId) => dispatch(actions.upvotePost(postId)),
-		downvote:	(postId) => dispatch(actions.downvotePost(postId)),
+		changeTitle:  	(title) => dispatch(actions.changeTitle(title)),
+        fetchPost:  	(postId) => dispatch(actions.fetchPost(postId)),
+		upvote:			(postId) => dispatch(actions.upvotePost(postId)),
+		downvote:		(postId) => dispatch(actions.downvotePost(postId)),
 	};
 }
 

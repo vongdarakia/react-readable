@@ -8,3 +8,4 @@ export const DOWNVOTE_POST  = 'DOWNVOTE_POST';
 
 // Post Page
 export const LOAD_POST      = 'LOAD_POST';
+export const CHANGE_TITLE   = 'CHANGE_TITLE';

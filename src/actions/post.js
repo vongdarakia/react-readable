@@ -7,9 +7,10 @@ export const addPost = () => {
     }
 }
 
-export const editPost = () => {
+export const editPost = (post) => {
     return {
-        type: types.EDIT_POST
+        type: types.EDIT_POST,
+        post
     }
 }
 
@@ -81,6 +82,16 @@ export const fetchPost = (id) => {
                 console.log(post);
                 dispatch(loadPost(post));
             }
+        });
+    }
+}
+
+export const changeTitle = (title) => {
+    console.log("changing title")
+    return dispatch => {
+        dispatch({
+            type: types.CHANGE_TITLE,
+            title
         });
     }
 }

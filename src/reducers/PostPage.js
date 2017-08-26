@@ -20,6 +20,12 @@ const PostPage = (state = initState, action) => {
             return { ...action.post }
         case types.DOWNVOTE_POST:
             return { ...action.post }
+        case types.CHANGE_TITLE:
+            console.log("yaya tittle")
+            console.log(action.title)
+            return {
+                title: action.title
+            }
         default:
             return state;
     }

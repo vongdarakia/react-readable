@@ -25,6 +25,26 @@ export const getPosts = (category='all') => {
     .catch(error => { console.log('request failed', error); })
 };
 
+export const editPost = (post) => {
+    let editPostUrl = `${url}/posts/${post.id}`;
+
+    return fetch(editPostUrl,
+        { 
+            headers: {
+                ...headers,
+                "Content-Type": "application/json"
+            },
+            method: 'post',
+            body: JSON.stringify({
+                title: post.title,
+                body: post.body
+            })
+        }
+    )
+    .then((res) => res.json())
+    .catch(error => { console.log('request failed', error); })
+}
+
 export const upvotePost = (postId, callback) => fetch(`${url}/posts/${postId}`,
     {
         headers: {
