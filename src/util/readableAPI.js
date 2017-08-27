@@ -72,3 +72,8 @@ export const downvotePost = (postId, callback) => fetch(`${url}/posts/${postId}`
     })
     .then(res => res.json().then(callback))
     .catch(error => { console.log('request failed', error); });
+
+export const getComments = postId =>
+    fetch(`${url}/posts/${postId}/comments`, { headers })
+    .then(res => res.json())
+    .catch(error => { console.log('request failed', error); });;

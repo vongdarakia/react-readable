@@ -95,3 +95,13 @@ export const changeTitle = (title) => {
         });
     }
 }
+
+export const changeBody = (body) => {
+    console.log("changing body")
+    return dispatch => {
+        dispatch({
+            type: types.CHANGE_BODY,
+            body
+        });
+    }
+}

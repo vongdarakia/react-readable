@@ -26,6 +26,12 @@ const PostPage = (state = initState, action) => {
             return {
                 title: action.title
             }
+        case types.CHANGE_BODY:
+            console.log("yaya page")
+            console.log(action.body)
+            return {
+                body: action.body
+            }
         default:
             return state;
     }
