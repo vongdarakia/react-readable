@@ -2,14 +2,30 @@ import React, { Component } from 'react';
 import Post from '../../containers/HomePage/Post';
 
 class HomePage extends Component {
-    componentDidMount() {
-        let category = "all";
-        if (this.props.match && this.props.match.params.category) {
-            category = this.props.match.params.category;
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            category: 'all'
         }
-        this.props.fetchCategories();
-        this.props.fetchPosts(category);
     }
+
+    componentDidMount() {
+        this.props.fetchCategories();
+    }
+
+    // Loads new posts when categories change
+    componentWillReceiveProps(props) {
+        let self = this;
+        let newCategory = props.match.params.category;
+
+        if (this.state.category !== newCategory) {
+            this.setState({ category: newCategory }, () => {
+                self.props.fetchPosts(newCategory);
+            });
+        }
+    }
+
 	render() {
         let category = "all";
         if (this.props.match && this.props.match.params.category) {

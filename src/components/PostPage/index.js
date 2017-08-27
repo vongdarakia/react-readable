@@ -16,13 +16,13 @@ class PostPage extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
-        console.log(this.props.match.params.postId);
+        // console.log(this.props);
+        // console.log(this.props.match.params.postId);
         // this.props.fetchPost(this.props.match.params.postId);
         ReadableAPI.getPost(this.props.match.params.postId)
         .then(
             (post) => {
-                console.log(post)
+                // console.log(post)
                 this.setState({ ...post });
             }
         );
@@ -30,7 +30,7 @@ class PostPage extends Component {
         ReadableAPI.getComments(this.props.match.params.postId)
         .then(
             comments => {
-                console.log(comments);
+                // console.log(comments);
                 this.setState({ comments });
             }
         );
@@ -38,8 +38,8 @@ class PostPage extends Component {
 
     componentWillReceiveProps(nextProps) {
         if (nextProps.title !== this.props.title) {
-            console.log(nextProps);
-            console.log("LKJIAYYAYYAAYYAAAA");
+            // console.log(nextProps);
+            // console.log("LKJIAYYAYYAAYYAAAA");
             this.refs.title.value = nextProps.title;
         }
       }

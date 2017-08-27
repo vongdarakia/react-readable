@@ -47,7 +47,6 @@ export const downvotePost = (postId) => {
 }
 
 export const loadPosts = (posts) => {
-    console.log("posts dispatching")
     return {
         type: types.LOAD_POSTS,
         posts
@@ -55,19 +54,18 @@ export const loadPosts = (posts) => {
 }
 
 export const loadPost = (post) => {
-    console.log("post dispatching")
     return {
         type: types.LOAD_POST,
-        post
+        post: {
+            ...post
+        }
     }
 }
 
 export const fetchPosts = (category) => {
-    console.log("posts fetching");
     return dispatch => {
         ReadableAPI.getPosts(category).then(posts => {
             if (posts) {
-                console.log(posts);
                 dispatch(loadPosts(posts));
             }
         });
@@ -75,11 +73,9 @@ export const fetchPosts = (category) => {
 }
 
 export const fetchPost = (id) => {
-    console.log("post fetching");
     return dispatch => {
         ReadableAPI.getPost(id).then(post => {
             if (post) {
-                console.log(post);
                 dispatch(loadPost(post));
             }
         });
@@ -87,7 +83,6 @@ export const fetchPost = (id) => {
 }
 
 export const changeTitle = (title) => {
-    console.log("changing title")
     return dispatch => {
         dispatch({
             type: types.CHANGE_TITLE,
@@ -97,7 +92,6 @@ export const changeTitle = (title) => {
 }
 
 export const changeBody = (body) => {
-    console.log("changing body")
     return dispatch => {
         dispatch({
             type: types.CHANGE_BODY,
