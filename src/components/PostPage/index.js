@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from '../../containers/HomePage/Post';
+// import Post from '../../containers/HomePage/Post';
 import * as ReadableAPI from '../../util/ReadableAPI';
 import uuidv4 from 'uuid/v4';
 import uuidv5 from 'uuid/v5';
@@ -13,12 +13,21 @@ class PostPage extends Component {
             title: props.title,
             body: props.body,
             comments: [],
-            user: 'unknown'
+            user: 'unknown',
+            isEditingTitle: false,
+            isEditingBody: false
         }
 
         this.handleTitleChange = this.handleTitleChange.bind(this);
         this.handleBodyChange = this.handleBodyChange.bind(this);
         this.addComment = this.addComment.bind(this);
+        this.beginTitleEdit = this.beginTitleEdit.bind(this);
+        this.editTitle = this.editTitle.bind(this);
+        this.cancelTitleEdit = this.cancelTitleEdit.bind(this);
+
+        this.beginBodyEdit = this.beginBodyEdit.bind(this);
+        this.editBody = this.editBody.bind(this);
+        this.cancelBodyEdit = this.cancelBodyEdit.bind(this);
     }
 
     componentDidMount() {
@@ -86,16 +95,93 @@ class PostPage extends Component {
         });
     }
 
+    beginTitleEdit() {
+        this.setState({isEditingTitle: true}, () => {
+            console.log('setting title')
+            document.getElementById('title').value = this.state.title;
+            document.getElementById('title').focus();
+        });
+    }
+
+    editTitle() {
+        let title = document.getElementById('title').value;
+        let { body, id } = this.state;
+        this.setState({isEditingTitle: false, title},() => {
+            console.log('title edited');
+            ReadableAPI.editPost({
+                id,
+                title,
+                body
+            })
+        })
+    }
+
+    cancelTitleEdit() {
+        this.setState({ isEditingTitle: false });
+    }
+
+    beginBodyEdit() {
+        this.setState({isEditingBody: true}, () => {
+            console.log('setting body')
+            document.getElementById('body').value = this.state.body;
+            document.getElementById('body').focus();
+        });
+    }
+
+    editBody() {
+        let body = document.getElementById('body').value;
+        let { title, id } = this.state;
+        this.setState({ isEditingBody: false, body },() => {
+            console.log('body edited');
+            ReadableAPI.editPost({
+                id,
+                title,
+                body
+            })
+        })
+    }
+
+    cancelBodyEdit() {
+        this.setState({ isEditingBody: false });
+    }
+
 	render() {
-        let { title, author, body, comments } = this.state;
+        let { title, author, body, comments, isEditingTitle, isEditingBody } = this.state;
         // console.log(this.props);
         console.log("rendering");
+        let titleInput = title;
+        let titleEditBtn = (<button onClick={this.beginTitleEdit}>Edit</button>);
+        let titleCancelEditBtn = '';
+
+        let bodyInput = body;
+        let bodyEditBtn = (<button onClick={this.beginBodyEdit}>Edit</button>);
+        let bodyCancelEditBtn = '';
+
+        if (isEditingTitle) {
+            titleInput = (<textarea id="title" />);
+            titleEditBtn = (<button onClick={this.editTitle}>Save</button>);
+            titleCancelEditBtn = (<button onClick={this.cancelTitleEdit}>Cancel</button>);
+        }
+
+        else if (isEditingBody) {
+            bodyInput = (<textarea id="body" />);
+            bodyEditBtn = (<button onClick={this.editBody}>Save</button>);
+            bodyCancelEditBtn = (<button onClick={this.cancelBodyEdit}>Cancel</button>);
+        }
 		return (
             <div className="PostPage">
                 Post page
-                <p><input type="text" onChange={this.handleTitleChange} value={title} /></p>
+                <p>
+                    { titleInput }
+                    { titleEditBtn }
+                    { titleCancelEditBtn }
+                </p>
                 <p>{author}</p>
-                <p><input type="text" onChange={this.handleBodyChange} value={body} /></p>
+                <p>
+                    { bodyInput }
+                    { bodyEditBtn }
+                    { bodyCancelEditBtn }
+                </p>
                 <div>
                     <p>You are commenting as {this.state.user}</p>
                     <textarea id="comment"></textarea>

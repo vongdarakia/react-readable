@@ -27,14 +27,14 @@ export const getPosts = (category='all') => {
 
 export const editPost = (post) => {
     let editPostUrl = `${url}/posts/${post.id}`;
-
+    console.log(post);
     return fetch(editPostUrl,
         { 
             headers: {
                 ...headers,
                 "Content-Type": "application/json"
             },
-            method: 'post',
+            method: 'put',
             body: JSON.stringify({
                 title: post.title,
                 body: post.body

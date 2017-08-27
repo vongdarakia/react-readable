@@ -29,4 +29,4 @@ class ReadableApp extends Component {
 }
 
 export default ReadableApp;
-{/* <Route path="/:category/:postId" component={PostPage}/> */}
+// {/* <Route path="/:category/:postId" component={PostPage}/> */}
