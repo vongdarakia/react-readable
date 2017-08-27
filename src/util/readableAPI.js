@@ -76,4 +76,18 @@ export const downvotePost = (postId, callback) => fetch(`${url}/posts/${postId}`
 export const getComments = postId =>
     fetch(`${url}/posts/${postId}/comments`, { headers })
     .then(res => res.json())
-    .catch(error => { console.log('request failed', error); });;
+    .catch(error => { console.log('request failed', error); });
+
+// comment object has id, timestamp, body, owner, parentId
+export const postComment = comment =>
+    fetch(`${url}/comments`,
+    {
+        headers: {
+            ...headers,
+            "Content-Type": "application/json"
+        },
+        method: 'post',
+        body: JSON.stringify(comment),
+    })
+    .then(res => res.json())
+    .catch(error => { console.log('request failed', error); });
